@@ -1,0 +1,58 @@
+.AlertBlueTheme{
+    -fx-background-color: #6495ED;
+}
+
+.AlertBlueTheme > *.label.content{
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #FFFFFF;
+}
+.AlertBlueTheme:header *.header-panel{
+    -fx-background-color: #4169E0;
+}
+.AlertBlueTheme:header *.header-panel *.label{
+    -fx-font-size: 16pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #FFFFFF;
+}
+
+/*
+ * Push Button в стиле Metro
+ */
+.button {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #4169E0;
+    -fx-border-width: 1;
+    -fx-background-radius: 0;
+    -fx-background-color: #4169E0;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #B0C4DE;
+}
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #6495ED;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+}
