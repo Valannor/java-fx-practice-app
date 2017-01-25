@@ -7,10 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Trip;
-import operations.FileSystemController;
 import main.templates_app.*;
 
 import java.io.IOException;
@@ -22,8 +22,7 @@ public class MainApp extends Application
 
     public MainApp()
     {
-        FileSystemController.openDataBase();
-        setOrdersToShow(FileSystemController.showAll());
+
     }
 
     public ObservableList<Trip> getOrdersToShow()
@@ -36,6 +35,7 @@ public class MainApp extends Application
         ordersToShow.addAll(toShow);
     }
 
+    private BorderPane root;
     private Stage primaryStage;
 
     @Override
@@ -46,7 +46,34 @@ public class MainApp extends Application
 
         this.primaryStage.getIcons().add(new Image("main/resources/images/taxi_img.png"));
 
+        initRoot();
         initMainWindow();
+    }
+
+    private void initRoot()
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("templates_app/Root.fxml"));
+            root = loader.load();
+
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+
+            RootController controller = loader.getController();
+            controller.setMainApp(this);
+
+            //Window min size
+            primaryStage.setMinHeight(300);
+            primaryStage.setMinWidth(691);
+
+            primaryStage.show();
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void initMainWindow()
@@ -57,16 +84,10 @@ public class MainApp extends Application
             loader.setLocation(getClass().getResource("templates_app/MainWind.fxml"));
             AnchorPane mainWind = loader.load();
 
-            Scene scene = new Scene(mainWind);
-            primaryStage.setScene(scene);
-
-            //Window min size
-            primaryStage.setMinHeight(300);
-            primaryStage.setMinWidth(691);
-
-            primaryStage.show();
+            root.setCenter(mainWind);
 
             MainWindController controller = loader.getController();
+            setMainWindController(controller);
             controller.setMainApp(this);
         } catch (IOException e)
         {
@@ -150,5 +171,18 @@ public class MainApp extends Application
             e.printStackTrace();
             return false;
         }
+    }
+
+    //Support operations
+    private MainWindController controller = null;
+
+    private void setMainWindController(MainWindController controller)
+    {
+        this.controller = controller;
+    }
+
+    public MainWindController getMainWindController()
+    {
+        return controller;
     }
 }

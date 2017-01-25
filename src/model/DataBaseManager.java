@@ -3,7 +3,6 @@ package model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.*;
 
 public class DataBaseManager
@@ -15,9 +14,8 @@ public class DataBaseManager
         return instance;
     }
 
-    private File dataBaseFile = new File("DataBase.txt");
-
     private List<Trip> trips;
+    private File dataBaseFile = null;
     private ObjectMapper mapper;
 
     private DataBaseManager()
@@ -80,20 +78,9 @@ public class DataBaseManager
     }
 
 
-    public void openDataBase()
+    public void openDataBase(File dataBaseFile)
     {
         List<Trip> tempTrips = new ArrayList<>();
-
-        if (!dataBaseFile.exists())
-        {
-            try
-            {
-                Files.createFile(dataBaseFile.toPath());
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(dataBaseFile)))
         {
@@ -112,7 +99,13 @@ public class DataBaseManager
         trips = tempTrips;
     }
 
-    public void saveDataBase()
+    public void createNewDataBase()
+    {
+        trips = new ArrayList<>();
+        dataBaseFile = null;
+    }
+
+    public void saveDataBase(File dataBaseFile)
     {
         List<Trip> tripsList = showInOrder();
 
@@ -133,5 +126,20 @@ public class DataBaseManager
         {
             e.printStackTrace();
         }
+    }
+
+    public void closeDataBase()
+    {
+        trips = null;
+    }
+
+    public File getDataBaseFile()
+    {
+        return dataBaseFile;
+    }
+
+    public void setDataBaseFile(File file)
+    {
+        this.dataBaseFile = file;
     }
 }

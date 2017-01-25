@@ -2,6 +2,7 @@ package main.templates_app;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import model.Status;
 import model.Trip;
 import operations.FileSystemController;
@@ -58,7 +59,6 @@ public class MainWindController
         if (okClicked)
         {
             showNewOrders();
-            handleSave();
         }
     }
 
@@ -76,7 +76,6 @@ public class MainWindController
                 {
                     mainApp.getOrdersToShow().clear();
                     mainApp.getOrdersToShow().addAll(FileSystemController.showByStatus(trip.getStatus()));
-                    handleSave();
                 }
             } else
             {
@@ -99,18 +98,11 @@ public class MainWindController
         {
             FileSystemController.remove(trip);
             showAllOrders();
-            handleSave();
         } else
         {
             AlertWindowClass.alertWindow(Alert.AlertType.WARNING, mainApp.getPrimaryStage(),
                     "Error", "Processing error", "Order is not selected");
         }
-    }
-
-    //If needed, we can put one more button into the Main Window
-    private void handleSave()
-    {
-        FileSystemController.save();
     }
 
 
@@ -153,5 +145,24 @@ public class MainWindController
     {
         mainApp.getOrdersToShow().clear();
         mainApp.getOrdersToShow().addAll(FileSystemController.findTripsByAddress(askAddress.getText()));
+    }
+
+
+    /**
+     * Support operations
+     */
+
+    //Lock-unlock main window buttons
+    @FXML
+    private AnchorPane mainWindow;
+
+    public void disableMainWindowButtons()
+    {
+        mainWindow.setDisable(true);
+    }
+
+    public void enableMainWindowButtons()
+    {
+        mainWindow.setDisable(false);
     }
 }

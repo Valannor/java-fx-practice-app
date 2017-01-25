@@ -4,21 +4,47 @@ import model.DataBaseManager;
 import model.Status;
 import model.Trip;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileSystemController
 {
     private static DataBaseManager dataBaseManager = DataBaseManager.getInstance();
+    private static boolean changed = false;
 
-    public static void openDataBase()
+    /**
+     * "File" menu button elements
+     */
+
+    public static void openDataBase(File file)
     {
-        dataBaseManager.openDataBase();
+        dataBaseManager.openDataBase(file);
+        dataBaseManager.setDataBaseFile(file);
     }
 
-    public static void save()
+    public static void createDataBase()
     {
-        dataBaseManager.saveDataBase();
+        dataBaseManager.createNewDataBase();
+        changed = true;
+    }
+
+    public static void save(File filePath)
+    {
+        dataBaseManager.saveDataBase(filePath);
+        changed = false;
+    }
+
+    public static void closeDataBase()
+    {
+        dataBaseManager.closeDataBase();
+        changed = false;
+    }
+
+    //Database status method
+    public static File getDataBaseFile()
+    {
+        return dataBaseManager.getDataBaseFile();
     }
 
 
@@ -29,17 +55,20 @@ public class FileSystemController
     public static void create(String address)
     {
         dataBaseManager.addTrip(address);
+        changed = true;
     }
 
     public static void editTrip(Trip trip, Status status, String address)
     {
         trip.setStatus(status);
         trip.setAddress(address);
+        changed = true;
     }
 
     public static void remove(Trip trip)
     {
         dataBaseManager.removeTrip(trip);
+        changed = true;
     }
 
 
@@ -91,5 +120,15 @@ public class FileSystemController
         }
 
         return trips;
+    }
+
+
+    /**
+     * Database status method
+     */
+
+    public static boolean isChanged()
+    {
+        return changed;
     }
 }

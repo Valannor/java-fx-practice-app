@@ -10,7 +10,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane fx:id="mainWindow" prefHeight="475.0" prefWidth="675.0" styleClass="background" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_app.MainWindController">
+<AnchorPane fx:id="mainWindow" disable="true" prefHeight="475.0" prefWidth="675.0" styleClass="background" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_app.MainWindController">
    <children>
       <Button alignment="TOP_LEFT" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#showAllOrders" prefHeight="25.0" prefWidth="150.0" text="All orders" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
       <Button alignment="TOP_LEFT" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#showNewOrders" prefHeight="25.0" prefWidth="150.0" text="New" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0" />
