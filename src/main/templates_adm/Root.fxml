@@ -11,17 +11,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<BorderPane prefHeight="500.0" prefWidth="675.0" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_app.RootController">
+<BorderPane prefHeight="500.0" prefWidth="675.0" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_adm.RootController">
    <top>
       <MenuBar prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="openFileButton" mnemonicParsing="false" onAction="#handleOpen" text="Open">
+                  <MenuItem fx:id="openFileButton" disable="true" mnemonicParsing="false" onAction="#handleOpen" text="Open">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
-                  <MenuItem fx:id="createFileButton" mnemonicParsing="false" onAction="#handleCreate" text="Create">
+                  <MenuItem fx:id="createFileButton" disable="true" mnemonicParsing="false" onAction="#handleCreate" text="Create">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
@@ -31,6 +31,16 @@
                      </accelerator></MenuItem>
                   <MenuItem fx:id="saveAsButton" disable="true" mnemonicParsing="false" onAction="#handleSaveAs" text="Save as" />
                   <MenuItem fx:id="closeFileButton" disable="true" mnemonicParsing="false" onAction="#handleCloseFile" text="Close file" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem fx:id="logInButton" mnemonicParsing="false" onAction="#logIn" text="Sign in" />
+                  <MenuItem fx:id="addUserButton" disable="true" mnemonicParsing="false" onAction="#registryUser" text="User registration" />
+                  <MenuItem fx:id="editPasswordButton" disable="true" mnemonicParsing="false" onAction="#editPassword" text="Change Password" />
+                  <MenuItem fx:id="removeUserButton" disable="true" mnemonicParsing="false" onAction="#removeUser" text="Delete account" />
+                  <MenuItem fx:id="logOutButton" disable="true" mnemonicParsing="false" onAction="#logOut" text="Sign out" />
+                  <MenuItem mnemonicParsing="false" onAction="#exitApplication" text="Close application" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="About">

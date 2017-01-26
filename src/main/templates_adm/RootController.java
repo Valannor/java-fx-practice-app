@@ -1,10 +1,11 @@
-package main.templates_app;
+package main.templates_adm;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import operations.FileSystemController;
+import operations.UserSystemController;
 import main.AlertWindowClass;
 import main.MainApp;
 
@@ -104,7 +105,8 @@ public class RootController
     {
         if (FileSystemController.isChanged())
         {
-            if (FileSystemController.isChanged())
+            boolean isOkClicked = mainApp.showSignOutDialog();
+            if (isOkClicked)
             {
                 handleSave();
             }
@@ -122,6 +124,63 @@ public class RootController
 
 
     /**
+     * "Administration" menu button operations
+     */
+    @FXML
+    private void logIn()
+    {
+        boolean isOkClicked = mainApp.showSignInDialog();
+        if (isOkClicked)
+        {
+            enableMenuButtons();
+
+            if (UserSystemController.isUserAdmin())
+            {
+                addUserButton.setDisable(false);
+                removeUserButton.setDisable(false);
+            } else
+            {
+                addUserButton.setDisable(true);
+                removeUserButton.setDisable(true);
+            }
+        }
+    }
+
+    @FXML
+    private void logOut()
+    {
+        UserSystemController.logOut();
+        disableMenuButtons();
+        handleCloseFile();
+    }
+
+    @FXML
+    private void registryUser()
+    {
+        mainApp.showAddUser();
+    }
+
+    @FXML
+    private void editPassword()
+    {
+        mainApp.showEditPassword();
+    }
+
+    @FXML
+    private void removeUser()
+    {
+        mainApp.showRemoveUser();
+    }
+
+    @FXML
+    private void exitApplication()
+    {
+        handleCloseFile();
+        System.exit(0);
+    }
+
+
+    /**
      * "About" menu button operations
      */
     @FXML
@@ -129,7 +188,7 @@ public class RootController
     {
         AlertWindowClass.alertWindow(Alert.AlertType.INFORMATION, null,
                 "Info", "Developer",
-                "Author: Rustam Gurd\r\nWebsite: https://github.com/Valannor");
+                "Author: Rustam Kurdov\r\nWebsite: https://vk.com/rustam_gurd");
     }
 
     @FXML
@@ -137,20 +196,69 @@ public class RootController
     {
         AlertWindowClass.alertWindow(Alert.AlertType.INFORMATION, null,
                 "Instructions", "Getting started",
-                "1) Press menu button \"File\"\r\n" +
-                        "2) Create or open existing database\r\n" +
-                        "3) Using workspace buttons, create\\edit orders\r\n" +
-                        "4) Close database after saving changes");
+                "1) Press menu button \"Profile\"\r\n" +
+                        "2) Sign in, using your username & password\r\n" +
+                        "3) Press menu button \"File\"\r\n" +
+                        "4) Create or open existing database\r\n" +
+                        "5) Using workspace buttons, create\\edit orders\r\n" +
+                        "6) Close database after saving changes\r\n" +
+                        "7) Sign out\r\n\r\n" +
+                        "P.S.:\r\n" +
+                        "a) Only \"admin\" account can add\\remove users\r\n" +
+                        "b) Any user can change his own password only\r\n" +
+                        "\r\nDefault password for admin account - \"admin\"");
     }
 
 
     /**
-     * Support
+     * Support operations
      */
+    @FXML
+    private MenuItem openFileButton;
+    @FXML
+    private MenuItem createFileButton;
     @FXML
     private MenuItem saveButton;
     @FXML
     private MenuItem saveAsButton;
     @FXML
     private MenuItem closeFileButton;
+
+    @FXML
+    private MenuItem logInButton;
+    @FXML
+    private MenuItem logOutButton;
+    @FXML
+    private MenuItem addUserButton;
+    @FXML
+    private MenuItem removeUserButton;
+    @FXML
+    private MenuItem editPasswordButton;
+
+    private void disableMenuButtons()
+    {
+        openFileButton.setDisable(true);
+        createFileButton.setDisable(true);
+        saveButton.setDisable(true);
+        saveAsButton.setDisable(true);
+        closeFileButton.setDisable(true);
+
+        logInButton.setDisable(false);
+        logOutButton.setDisable(true);
+        editPasswordButton.setDisable(true);
+        addUserButton.setDisable(true);
+        removeUserButton.setDisable(true);
+    }
+
+    private void enableMenuButtons()
+    {
+        openFileButton.setDisable(false);
+        createFileButton.setDisable(false);
+
+        logInButton.setDisable(true);
+        logOutButton.setDisable(false);
+        editPasswordButton.setDisable(false);
+        addUserButton.setDisable(false);
+        removeUserButton.setDisable(false);
+    }
 }
