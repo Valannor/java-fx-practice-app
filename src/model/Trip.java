@@ -97,11 +97,6 @@ public class Trip
         return new SimpleStringProperty(orderNumber + "");
     }
 
-    public SimpleObjectProperty<Date> orderDateProp()
-    {
-        return new SimpleObjectProperty<>(orderDate);
-    }
-
     public StringProperty orderStatusProp()
     {
         String statusText;

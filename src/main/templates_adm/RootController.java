@@ -188,7 +188,7 @@ public class RootController
     {
         AlertWindowClass.alertWindow(Alert.AlertType.INFORMATION, null,
                 "Info", "Developer",
-                "Author: Rustam Kurdov\r\nWebsite: https://vk.com/rustam_gurd");
+                "Author: Rustam Kurdov\r\nWebsite: https://github.com/Valannor");
     }
 
     @FXML

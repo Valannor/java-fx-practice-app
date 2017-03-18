@@ -1,5 +1,6 @@
 package main.templates_app;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -9,7 +10,9 @@ import operations.FileSystemController;
 import main.AlertWindowClass;
 import main.MainApp;
 
-import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class MainWindController
 {
@@ -21,11 +24,11 @@ public class MainWindController
     @FXML
     private TableColumn<Trip, String> numberOfOrder;
     @FXML
-    private TableColumn<Trip, Date> dateOfOrder;
+    private TableColumn<Trip, String> addressOfOrder;
     @FXML
     private TableColumn<Trip, String> statusOfOrder;
     @FXML
-    private TableColumn<Trip, String> addressOfOrder;
+    private TableColumn<Trip, String> dateOfOrder;
 
     private MainApp mainApp;
 
@@ -43,9 +46,18 @@ public class MainWindController
     private void initialize()
     {
         numberOfOrder.setCellValueFactory(cellData -> cellData.getValue().orderNumberProp());
-        dateOfOrder.setCellValueFactory(cellData -> cellData.getValue().orderDateProp());
-        statusOfOrder.setCellValueFactory(cellData -> cellData.getValue().orderStatusProp());
         addressOfOrder.setCellValueFactory(cellData -> cellData.getValue().orderAddressProp());
+        statusOfOrder.setCellValueFactory(cellData -> cellData.getValue().orderStatusProp());
+
+        dateOfOrder.setCellValueFactory(
+                cellData ->
+                {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy  hh:mm:ss", Locale.ENGLISH);
+                    property.setValue(dateFormat.format(cellData.getValue().getOrderDate()));
+                    return property;
+                }
+        );
     }
 
 
