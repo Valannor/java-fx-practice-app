@@ -5,8 +5,10 @@ import model.Status;
 import model.Trip;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class FileSystemController
 {
@@ -130,5 +132,32 @@ public class FileSystemController
     public static boolean isChanged()
     {
         return changed;
+    }
+
+
+    /**
+     * Date & language representation modes
+     */
+    public static String datePattern = "dd.MM.yyyy  hh:mm:ss";
+    public static Locale locale = Locale.ENGLISH;
+
+    public static String getDatePattern()
+    {
+        return datePattern;
+    }
+
+    public static Locale getLocale()
+    {
+        return locale;
+    }
+
+    public static void setDatePattern(String newPattern)
+    {
+        datePattern = newPattern;
+    }
+
+    public static void setLocale(Locale newLocale)
+    {
+        locale = newLocale;
     }
 }

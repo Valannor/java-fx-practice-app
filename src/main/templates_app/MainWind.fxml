@@ -21,7 +21,7 @@
           <TableColumn fx:id="numberOfOrder" prefWidth="26.0625" text="№" />
             <TableColumn fx:id="addressOfOrder" prefWidth="158.54296875" text="Address" />
             <TableColumn fx:id="statusOfOrder" prefWidth="99.0" text="Status" />
-          <TableColumn fx:id="dateOfOrder" prefWidth="100.0" text="Date" />
+          <TableColumn fx:id="dateOfOrder" prefWidth="100.0" text="Date/Time" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

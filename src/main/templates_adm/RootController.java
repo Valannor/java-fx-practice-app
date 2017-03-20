@@ -2,6 +2,7 @@ package main.templates_adm;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import operations.FileSystemController;
@@ -52,7 +53,7 @@ public class RootController
             closeFileButton.setDisable(false);
             mainApp.getMainWindController().enableMainWindowButtons();
 
-            mainApp.setOrdersToShow(FileSystemController.showAll());
+            refreshTabView();
         }
     }
 
@@ -181,6 +182,70 @@ public class RootController
 
 
     /**
+     * "Settings" menu button operations
+     */
+    @FXML
+    private MenuItem defaultDateMode;
+    @FXML
+    private MenuItem onlyDateMode;
+    @FXML
+    private MenuItem onlyTimeMode;
+    @FXML
+    private MenuItem engInterface;
+    @FXML
+    private MenuItem rusInterface;
+
+
+    @FXML
+    private void handleDefaultDateMode()
+    {
+        FileSystemController.setDatePattern("dd.MM.yyyy  hh:mm:ss");
+
+        defaultDateMode.setDisable(true);
+        onlyDateMode.setDisable(false);
+        onlyTimeMode.setDisable(false);
+
+        refreshTabView();
+    }
+
+    @FXML
+    private void handleOnlyDateMode()
+    {
+        FileSystemController.setDatePattern("dd.MM.yyyy");
+
+        defaultDateMode.setDisable(false);
+        onlyDateMode.setDisable(true);
+        onlyTimeMode.setDisable(false);
+
+        refreshTabView();
+    }
+
+    @FXML
+    private void handleOnlyTimeMode()
+    {
+        FileSystemController.setDatePattern("hh:mm:ss");
+
+        defaultDateMode.setDisable(false);
+        onlyDateMode.setDisable(false);
+        onlyTimeMode.setDisable(true);
+
+        refreshTabView();
+    }
+
+    @FXML
+    private void handleEngInterface()
+    {
+        // TODO: 19.03.2017
+    }
+
+    @FXML
+    private void handleRusInterface()
+    {
+        // TODO: 19.03.2017
+    }
+
+
+    /**
      * "About" menu button operations
      */
     @FXML
@@ -260,5 +325,17 @@ public class RootController
         editPasswordButton.setDisable(false);
         addUserButton.setDisable(false);
         removeUserButton.setDisable(false);
+    }
+
+    private void refreshTabView()
+    {
+        try
+        {
+            mainApp.setOrdersToShow(FileSystemController.showAll());
+        }
+        catch (RuntimeException e)
+        {
+            //TODO - Empty list
+        }
     }
 }

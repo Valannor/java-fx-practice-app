@@ -12,7 +12,6 @@ import main.MainApp;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
 
 public class MainWindController
 {
@@ -53,7 +52,7 @@ public class MainWindController
                 cellData ->
                 {
                     SimpleStringProperty property = new SimpleStringProperty();
-                    DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy  hh:mm:ss", Locale.ENGLISH);
+                    DateFormat dateFormat = new SimpleDateFormat(FileSystemController.datePattern, FileSystemController.locale);
                     property.setValue(dateFormat.format(cellData.getValue().getOrderDate()));
                     return property;
                 }

@@ -13,7 +13,7 @@
 
 <BorderPane prefHeight="500.0" prefWidth="675.0" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_adm.RootController">
    <top>
-      <MenuBar prefHeight="25.0" prefWidth="600.0">
+      <MenuBar prefHeight="25.0" prefWidth="600.0" stylesheets="@../styles/BlueTheme.css">
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
@@ -41,6 +41,22 @@
                   <MenuItem fx:id="removeUserButton" disable="true" mnemonicParsing="false" onAction="#removeUser" text="Delete account" />
                   <MenuItem fx:id="logOutButton" disable="true" mnemonicParsing="false" onAction="#logOut" text="Sign out" />
                   <MenuItem mnemonicParsing="false" onAction="#exitApplication" text="Close application" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Settings">
+               <items>
+                  <Menu mnemonicParsing="false" text="Date/Time view">
+                    <items>
+                        <MenuItem fx:id="defaultDateMode" disable="true" mnemonicParsing="false" onAction="#handleDefaultDateMode" text="Default" />
+                      <MenuItem fx:id="onlyDateMode" mnemonicParsing="false" onAction="#handleOnlyDateMode" text="Date only" />
+                        <MenuItem fx:id="onlyTimeMode" mnemonicParsing="false" onAction="#handleOnlyTimeMode" text="Time only" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Language">
+                     <items>
+                        <MenuItem fx:id="engInterface" mnemonicParsing="false" onAction="#handleEngInterface" text="English" />
+                        <MenuItem fx:id="rusInterface" mnemonicParsing="false" onAction="#handleRusInterface" text="Russian" />
+                     </items></Menu>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="About">

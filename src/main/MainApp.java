@@ -33,6 +33,9 @@ public class MainApp extends Application
 
     public void setOrdersToShow(List<Trip> toShow)
     {
+        if (!ordersToShow.isEmpty())
+            ordersToShow.clear();
+
         ordersToShow.addAll(toShow);
     }
 
