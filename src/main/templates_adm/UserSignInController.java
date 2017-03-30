@@ -1,12 +1,12 @@
 package main.templates_adm;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.lang_loader.LanguageLoader;
 import operations.UserSystemController;
 import main.AlertWindowClass;
+import model.lang_loader.WindowType;
 
 public class UserSignInController
 {
@@ -14,6 +14,14 @@ public class UserSignInController
     private TextField loginField;
     @FXML
     private PasswordField passwordField;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private Button signInButton;
+    @FXML
+    private Button cancelButton;
 
     private Stage dialogStage;
     private boolean okClicked = false;
@@ -21,7 +29,13 @@ public class UserSignInController
     @FXML
     public void initialize()
     {
-
+        if (!LanguageLoader.getInstance().isEnglish())
+        {
+            usernameLabel.textProperty().setValue(elementName("usernameLabel"));
+            passwordLabel.textProperty().setValue(elementName("passwordLabel"));
+            signInButton.textProperty().setValue(elementName("signInButton"));
+            cancelButton.textProperty().setValue(elementName("cancelButton"));
+        }
     }
 
     public void setDialogStage(Stage dialogStage)
@@ -43,7 +57,8 @@ public class UserSignInController
             okClicked = true;
 
             AlertWindowClass.alertWindow(Alert.AlertType.CONFIRMATION, dialogStage,
-                    "Sign in", "Done", "Sign in is successful");
+                    elementName("confirmTitle"), elementName("confirmHeader"),
+                    elementName("confirmMessagePattern"));
 
             dialogStage.close();
         }
@@ -62,10 +77,10 @@ public class UserSignInController
         if (loginField.getText() == null || loginField.getText().length() == 0
                 || passwordField.getText() == null || passwordField.getText().length() == 0)
         {
-            message += "Not all data for authentication was provided";
+            message += elementName("errorMessage_1");
         } else if (!UserSystemController.isUserDataCorrect(loginField.getText(), passwordField.getText()))
         {
-            message += "You entered incorrect username or password";
+            message += elementName("errorMessage_2");
         }
 
         if (message.length() == 0)
@@ -73,9 +88,18 @@ public class UserSignInController
             return true;
         } else
         {
-            AlertWindowClass.alertWindow(Alert.AlertType.WARNING, dialogStage, "Sign in",
-                    "Error", message);
+            AlertWindowClass.alertWindow(Alert.AlertType.WARNING, dialogStage, elementName("errorTitle"),
+                    elementName("errorHeader"), message);
             return false;
         }
+    }
+
+
+    /**
+     * Settings
+     */
+    private String elementName(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.USER_SIGN_IN, elementType);
     }
 }

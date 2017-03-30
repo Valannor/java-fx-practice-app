@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import model.Status;
 import model.Trip;
+import model.lang_loader.LanguageLoader;
+import model.lang_loader.WindowType;
 import operations.FileSystemController;
 import main.AlertWindowClass;
 import main.MainApp;
@@ -91,12 +93,12 @@ public class MainWindController
             } else
             {
                 AlertWindowClass.alertWindow(Alert.AlertType.WARNING, mainApp.getPrimaryStage(),
-                        "Error", "Processing error", "Changing this order is no longer available");
+                        errorTitle(), errorHeader(), elementName("editOrder_notAvailable"));
             }
         } else
         {
             AlertWindowClass.alertWindow(Alert.AlertType.WARNING, mainApp.getPrimaryStage(),
-                    "Error", "Processing error", "Order is not selected");
+                    errorTitle(), errorHeader(), elementName("editOrder_notSelected"));
         }
     }
 
@@ -112,7 +114,7 @@ public class MainWindController
         } else
         {
             AlertWindowClass.alertWindow(Alert.AlertType.WARNING, mainApp.getPrimaryStage(),
-                    "Error", "Processing error", "Order is not selected");
+                    errorTitle(), errorHeader(), elementName("removeOrder_notSelected"));
         }
     }
 
@@ -175,5 +177,24 @@ public class MainWindController
     public void enableMainWindowButtons()
     {
         mainWindow.setDisable(false);
+    }
+
+
+    /**
+     * Settings
+     */
+    private String elementName(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.MAIN, elementType);
+    }
+
+    private String errorTitle()
+    {
+        return elementName("errorTitle");
+    }
+
+    private String errorHeader()
+    {
+        return elementName("errorHeader");
     }
 }

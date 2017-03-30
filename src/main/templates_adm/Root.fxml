@@ -15,7 +15,7 @@
    <top>
       <MenuBar prefHeight="25.0" prefWidth="600.0" stylesheets="@../styles/BlueTheme.css">
          <menus>
-            <Menu mnemonicParsing="false" text="File">
+            <Menu fx:id="file" mnemonicParsing="false" text="File">
                <items>
                   <MenuItem fx:id="openFileButton" disable="true" mnemonicParsing="false" onAction="#handleOpen" text="Open">
                      <accelerator>
@@ -33,36 +33,36 @@
                   <MenuItem fx:id="closeFileButton" disable="true" mnemonicParsing="false" onAction="#handleCloseFile" text="Close file" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Profile">
+            <Menu fx:id="profile" mnemonicParsing="false" text="Profile">
                <items>
                   <MenuItem fx:id="logInButton" mnemonicParsing="false" onAction="#logIn" text="Sign in" />
                   <MenuItem fx:id="addUserButton" disable="true" mnemonicParsing="false" onAction="#registryUser" text="User registration" />
                   <MenuItem fx:id="editPasswordButton" disable="true" mnemonicParsing="false" onAction="#editPassword" text="Change Password" />
                   <MenuItem fx:id="removeUserButton" disable="true" mnemonicParsing="false" onAction="#removeUser" text="Delete account" />
                   <MenuItem fx:id="logOutButton" disable="true" mnemonicParsing="false" onAction="#logOut" text="Sign out" />
-                  <MenuItem mnemonicParsing="false" onAction="#exitApplication" text="Close application" />
+                  <MenuItem fx:id="closeApp" mnemonicParsing="false" onAction="#exitApplication" text="Close application" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Settings">
+            <Menu fx:id="settings" mnemonicParsing="false" text="Settings">
                <items>
-                  <Menu mnemonicParsing="false" text="Date/Time view">
+                  <Menu fx:id="dateTimeView" mnemonicParsing="false" text="Date/Time view">
                     <items>
                         <MenuItem fx:id="defaultDateMode" disable="true" mnemonicParsing="false" onAction="#handleDefaultDateMode" text="Default" />
                       <MenuItem fx:id="onlyDateMode" mnemonicParsing="false" onAction="#handleOnlyDateMode" text="Date only" />
                         <MenuItem fx:id="onlyTimeMode" mnemonicParsing="false" onAction="#handleOnlyTimeMode" text="Time only" />
                     </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Language">
+                  <Menu fx:id="language" mnemonicParsing="false" text="Language">
                      <items>
                         <MenuItem fx:id="engInterface" mnemonicParsing="false" onAction="#handleEngInterface" text="English" />
-                        <MenuItem fx:id="rusInterface" mnemonicParsing="false" onAction="#handleRusInterface" text="Russian" />
+                        <MenuItem fx:id="rusInterface" mnemonicParsing="false" onAction="#handleRusInterface" text="Русский" />
                      </items></Menu>
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="About">
+            <Menu fx:id="about" mnemonicParsing="false" text="About">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleAboutDeveloper" text="Info" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleInstruction" text="Instructions" />
+                  <MenuItem fx:id="info" mnemonicParsing="false" onAction="#handleAboutDeveloper" text="Info" />
+                  <MenuItem fx:id="instructions" mnemonicParsing="false" onAction="#handleInstruction" text="Instructions" />
                </items>
             </Menu>
          </menus>

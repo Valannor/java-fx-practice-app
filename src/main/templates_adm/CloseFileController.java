@@ -1,18 +1,34 @@
 package main.templates_adm;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.lang_loader.LanguageLoader;
 import operations.UserSystemController;
+import model.lang_loader.WindowType;
 
 public class CloseFileController
 {
+    @FXML
+    private Label question;
+    @FXML
+    private Button yesButton;
+    @FXML
+    private Button noButton;
+
     private Stage dialogStage;
     private boolean okClicked = false;
 
     @FXML
     public void initialize()
     {
-
+        if (!LanguageLoader.getInstance().isEnglish())
+        {
+            question.textProperty().setValue(elementName("question"));
+            yesButton.textProperty().setValue(elementName("yesButton"));
+            noButton.textProperty().setValue(elementName("noButton"));
+        }
     }
 
     public void setDialogStage(Stage dialogStage)
@@ -38,5 +54,14 @@ public class CloseFileController
     private void handleCancel()
     {
         dialogStage.close();
+    }
+
+
+    /**
+     * Settings
+     */
+    private String elementName(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.CLOSE_FILE, elementType);
     }
 }

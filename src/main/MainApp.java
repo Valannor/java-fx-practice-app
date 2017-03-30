@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import model.Trip;
 import main.templates_adm.*;
 import main.templates_app.*;
+import model.lang_loader.LanguageLoader;
+import model.lang_loader.WindowType;
 
 import java.io.IOException;
 import java.util.List;
@@ -122,7 +124,7 @@ public class MainApp extends Application
             AnchorPane addPane = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("New order");
+            dialogStage.setTitle(elementName("new_order"));
             dialogStage.setResizable(false);
             dialogStage.initModality(Modality.WINDOW_MODAL);
 
@@ -154,7 +156,7 @@ public class MainApp extends Application
 
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit order");
+            dialogStage.setTitle(elementName("edit_order"));
             dialogStage.setResizable(false);
             dialogStage.initModality(Modality.WINDOW_MODAL);
 
@@ -203,7 +205,7 @@ public class MainApp extends Application
             AnchorPane signInPane = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Sign in");
+            dialogStage.setTitle(elementName("sign_in"));
 
             dialogStage.setResizable(false);
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -235,7 +237,7 @@ public class MainApp extends Application
             AnchorPane signOutPane = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Sign out");
+            dialogStage.setTitle(elementName("sign_out"));
             dialogStage.setResizable(false);
             dialogStage.initModality(Modality.WINDOW_MODAL);
 
@@ -266,7 +268,7 @@ public class MainApp extends Application
             AnchorPane addUserPane = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("User registration");
+            dialogStage.setTitle(elementName("registration"));
 
             dialogStage.setResizable(false);
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -298,7 +300,7 @@ public class MainApp extends Application
             AnchorPane removeUserPane = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Delete account");
+            dialogStage.setTitle(elementName("delete_account"));
 
             dialogStage.setResizable(false);
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -330,7 +332,7 @@ public class MainApp extends Application
             AnchorPane editPasswordPane = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Change Password");
+            dialogStage.setTitle(elementName("change_password"));
 
             dialogStage.setResizable(false);
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -351,5 +353,10 @@ public class MainApp extends Application
             e.printStackTrace();
             return false;
         }
+    }
+
+    private String elementName(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.MAIN_APP, elementType);
     }
 }

@@ -1,14 +1,14 @@
 package main.templates_app;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Status;
 import model.Trip;
 import operations.FileSystemController;
 import main.AlertWindowClass;
+import model.lang_loader.LanguageLoader;
+import model.lang_loader.WindowType;
 
 public class EditOrderController
 {
@@ -16,6 +16,14 @@ public class EditOrderController
     private TextField address;
     @FXML
     private ChoiceBox<String> statusChoiceBox = new ChoiceBox<>();
+    @FXML
+    private Label addressLabel;
+    @FXML
+    private Label statusLabel;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button cancelButton;
 
     private Stage dialogStage;
     private Trip trip;
@@ -24,7 +32,13 @@ public class EditOrderController
     @FXML
     private void initialize()
     {
-
+        if (!LanguageLoader.getInstance().isEnglish())
+        {
+            addressLabel.textProperty().setValue(elementName("addressLabel"));
+            statusLabel.textProperty().setValue(elementName("statusLabel"));
+            saveButton.textProperty().setValue(elementName("saveButton"));
+            cancelButton.textProperty().setValue(elementName("cancelButton"));
+        }
     }
 
     public void setDialogStage(Stage dialogStage)
@@ -34,6 +48,7 @@ public class EditOrderController
 
     public void setTrip(Trip trip)
     {
+        // TODO: 30.03.2017 Choice box fillers localizations
         this.trip = trip;
 
         this.address.setText(trip.getAddress());
@@ -96,5 +111,14 @@ public class EditOrderController
                     "Error", message);
             return false;
         }
+    }
+
+
+    /**
+     * Settings
+     */
+    private String elementName(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.EDIT_ORDER, elementType);
     }
 }

@@ -2,15 +2,19 @@ package main.templates_adm;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
+import model.lang_loader.Language;
 import operations.FileSystemController;
+import model.lang_loader.LanguageLoader;
 import operations.UserSystemController;
 import main.AlertWindowClass;
 import main.MainApp;
+import model.lang_loader.WindowType;
 
 import java.io.File;
+import java.util.Locale;
 
 public class RootController
 {
@@ -24,6 +28,13 @@ public class RootController
     public void setMainApp(MainApp mainApp)
     {
         this.mainApp = mainApp;
+    }
+
+    @FXML
+    private void initialize()
+    {
+        if (!LanguageLoader.getInstance().isEnglish())
+            applyInterface();
     }
 
 
@@ -63,7 +74,7 @@ public class RootController
         FileSystemController.createDataBase();
 
         AlertWindowClass.alertWindow(Alert.AlertType.CONFIRMATION, mainApp.getPrimaryStage(),
-                "New file", "Done", "New database was created successfully");
+                WindowType.CREATE_BASE);
 
         saveButton.setDisable(false);
         saveAsButton.setDisable(false);
@@ -185,21 +196,38 @@ public class RootController
      * "Settings" menu button operations
      */
     @FXML
-    private MenuItem defaultDateMode;
+    private Menu file;
     @FXML
-    private MenuItem onlyDateMode;
+    private MenuItem openFileButton, createFileButton, saveButton,
+            saveAsButton, closeFileButton;
+
     @FXML
-    private MenuItem onlyTimeMode;
+    private Menu profile;
     @FXML
-    private MenuItem engInterface;
+    private MenuItem logInButton, logOutButton, addUserButton,
+            removeUserButton, editPasswordButton, closeApp;
+
     @FXML
-    private MenuItem rusInterface;
+    private Menu settings;
+    @FXML
+    private Menu dateTimeView;
+    @FXML
+    private MenuItem defaultDateMode, onlyDateMode, onlyTimeMode;
+    @FXML
+    private Menu language;
+    @FXML
+    private MenuItem engInterface, rusInterface;
+
+    @FXML
+    private Menu about;
+    @FXML
+    private MenuItem info, instructions;
 
 
     @FXML
     private void handleDefaultDateMode()
     {
-        FileSystemController.setDatePattern("dd.MM.yyyy  hh:mm:ss");
+        FileSystemController.setDatePattern("dd.MM.yyyy\thh:mm:ss");
 
         defaultDateMode.setDisable(true);
         onlyDateMode.setDisable(false);
@@ -211,7 +239,7 @@ public class RootController
     @FXML
     private void handleOnlyDateMode()
     {
-        FileSystemController.setDatePattern("dd.MM.yyyy");
+        FileSystemController.setDatePattern("dd.MM.yyyy\tEEE");
 
         defaultDateMode.setDisable(false);
         onlyDateMode.setDisable(true);
@@ -236,12 +264,60 @@ public class RootController
     private void handleEngInterface()
     {
         // TODO: 19.03.2017
+        FileSystemController.setLocale(Locale.ENGLISH);
+
+        LanguageLoader.setConfig(Language.ENGLISH);
+        applyInterface();
+
+        engInterface.setVisible(false);
+        rusInterface.setVisible(true);
     }
 
     @FXML
     private void handleRusInterface()
     {
         // TODO: 19.03.2017
+        FileSystemController.setLocale(new Locale("ru", "RU"));
+
+        LanguageLoader.setConfig(Language.RUSSIAN);
+        applyInterface();
+
+        engInterface.setVisible(true);
+        rusInterface.setVisible(false);
+    }
+
+    private void applyInterface()
+    {
+        file.textProperty().setValue(elementName("fileMenu"));
+        openFileButton.textProperty().setValue(elementName("openFile"));
+        createFileButton.textProperty().setValue(elementName("createFile"));
+        saveButton.textProperty().setValue(elementName("saveButton"));
+        saveAsButton.textProperty().setValue(elementName("saveAsButton"));
+        closeFileButton.textProperty().setValue(elementName("closeFile"));
+
+        profile.textProperty().setValue(elementName("profileMenu"));
+        logInButton.textProperty().setValue(elementName("logIn"));
+        logOutButton.textProperty().setValue(elementName("logOut"));
+        addUserButton.textProperty().setValue(elementName("addUser"));
+        removeUserButton.textProperty().setValue(elementName("removeUser"));
+        editPasswordButton.textProperty().setValue(elementName("editPassword"));
+        closeApp.textProperty().setValue(elementName("closeApp"));
+
+        settings.textProperty().setValue(elementName("settingsMenu"));
+        dateTimeView.textProperty().setValue(elementName("dateTimeMenu"));
+        defaultDateMode.textProperty().setValue(elementName("defaultTab"));
+        onlyDateMode.textProperty().setValue(elementName("onlyDate"));
+        onlyTimeMode.textProperty().setValue(elementName("onlyTime"));
+        language.textProperty().setValue(elementName("languageMenu"));
+
+        about.textProperty().setValue(elementName("aboutMenu"));
+        info.textProperty().setValue(elementName("infoButton"));
+        instructions.textProperty().setValue(elementName("instructButton"));
+    }
+
+    private String elementName(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.ROOT, elementType);
     }
 
 
@@ -251,55 +327,19 @@ public class RootController
     @FXML
     private void handleAboutDeveloper()
     {
-        AlertWindowClass.alertWindow(Alert.AlertType.INFORMATION, null,
-                "Info", "Developer",
-                "Author: Rustam Kurdov\r\nWebsite: https://github.com/Valannor");
+        AlertWindowClass.alertWindow(Alert.AlertType.INFORMATION, null, WindowType.INFO);
     }
 
     @FXML
     private void handleInstruction()
     {
-        AlertWindowClass.alertWindow(Alert.AlertType.INFORMATION, null,
-                "Instructions", "Getting started",
-                "1) Press menu button \"Profile\"\r\n" +
-                        "2) Sign in, using your username & password\r\n" +
-                        "3) Press menu button \"File\"\r\n" +
-                        "4) Create or open existing database\r\n" +
-                        "5) Using workspace buttons, create\\edit orders\r\n" +
-                        "6) Close database after saving changes\r\n" +
-                        "7) Sign out\r\n\r\n" +
-                        "P.S.:\r\n" +
-                        "a) Only \"admin\" account can add\\remove users\r\n" +
-                        "b) Any user can change his own password only\r\n" +
-                        "\r\nDefault password for admin account - \"admin\"");
+        AlertWindowClass.alertWindow(Alert.AlertType.INFORMATION, null, WindowType.INSTRUCTION);
     }
 
 
     /**
      * Support operations
      */
-    @FXML
-    private MenuItem openFileButton;
-    @FXML
-    private MenuItem createFileButton;
-    @FXML
-    private MenuItem saveButton;
-    @FXML
-    private MenuItem saveAsButton;
-    @FXML
-    private MenuItem closeFileButton;
-
-    @FXML
-    private MenuItem logInButton;
-    @FXML
-    private MenuItem logOutButton;
-    @FXML
-    private MenuItem addUserButton;
-    @FXML
-    private MenuItem removeUserButton;
-    @FXML
-    private MenuItem editPasswordButton;
-
     private void disableMenuButtons()
     {
         openFileButton.setDisable(true);
@@ -332,8 +372,7 @@ public class RootController
         try
         {
             mainApp.setOrdersToShow(FileSystemController.showAll());
-        }
-        catch (RuntimeException e)
+        } catch (RuntimeException e)
         {
             //TODO - Empty list
         }

@@ -1,12 +1,12 @@
 package main.templates_adm;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.lang_loader.LanguageLoader;
 import operations.UserSystemController;
 import main.AlertWindowClass;
+import model.lang_loader.WindowType;
 
 public class AddUserController
 {
@@ -14,6 +14,14 @@ public class AddUserController
     private TextField loginField;
     @FXML
     private PasswordField passwordField;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button cancelButton;
 
     private Stage dialogStage;
     private boolean okClicked = false;
@@ -21,7 +29,13 @@ public class AddUserController
     @FXML
     public void initialize()
     {
-
+        if (!LanguageLoader.getInstance().isEnglish())
+        {
+            usernameLabel.textProperty().setValue(elementName("usernameLabel"));
+            passwordLabel.textProperty().setValue(elementName("passwordLabel"));
+            saveButton.textProperty().setValue(elementName("saveButton"));
+            cancelButton.textProperty().setValue(elementName("cancelButton"));
+        }
     }
 
     public void setDialogStage(Stage dialogStage)
@@ -43,9 +57,9 @@ public class AddUserController
             okClicked = true;
 
             AlertWindowClass.alertWindow(Alert.AlertType.CONFIRMATION, dialogStage,
-                    "User registration", "Done",
-                    String.format("New user was created successfully\r\n\r\nUsername: %s\r\nPassword: %s",
-                            loginField.getText(), passwordField.getText()));
+                    elementName("confirmTitle"), elementName("confirmHeader"),
+                    elementName("confirmMessagePattern"),
+                            loginField.getText(), passwordField.getText());
 
             dialogStage.close();
         }
@@ -64,14 +78,14 @@ public class AddUserController
         if (loginField.getText() == null || loginField.getText().length() == 0
                 || passwordField.getText() == null || passwordField.getText().length() == 0)
         {
-            message += "You've provided not full data";
+            message += elementName("errorMessage_1");
         } else if (UserSystemController.isUserExist(loginField.getText()))
         {
-            message += "This user already exist";
+            message += elementName("errorMessage_2");
         }
         else if (loginField.getText().contains(" ") || passwordField.getText().contains(" "))
         {
-            message += "Username and password can not contain spaces";
+            message += elementName("errorMessage_3");
         }
 
         if (message.length() == 0)
@@ -79,9 +93,18 @@ public class AddUserController
             return true;
         } else
         {
-            AlertWindowClass.alertWindow(Alert.AlertType.WARNING, dialogStage, "User registration",
-                    "Error", message);
+            AlertWindowClass.alertWindow(Alert.AlertType.WARNING, dialogStage, elementName("errorTitle"),
+                    elementName("errorHeader"), message);
             return false;
         }
+    }
+
+
+    /**
+     * Settings
+     */
+    private String elementName(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.ADD_USER, elementType);
     }
 }
