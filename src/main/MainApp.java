@@ -95,6 +95,8 @@ public class MainApp extends Application
             MainWindController controller = loader.getController();
             setMainWindController(controller);
             controller.setMainApp(this);
+
+            controller.applyInterface();
         } catch (IOException e)
         {
             e.printStackTrace();

@@ -269,6 +269,8 @@ public class RootController
         LanguageLoader.setConfig(Language.ENGLISH);
         applyInterface();
 
+        mainApp.getMainWindController().applyInterface();
+
         engInterface.setVisible(false);
         rusInterface.setVisible(true);
     }
@@ -281,6 +283,8 @@ public class RootController
 
         LanguageLoader.setConfig(Language.RUSSIAN);
         applyInterface();
+
+        mainApp.getMainWindController().applyInterface();
 
         engInterface.setVisible(true);
         rusInterface.setVisible(false);

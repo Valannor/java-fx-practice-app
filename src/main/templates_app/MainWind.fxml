@@ -12,10 +12,10 @@
 
 <AnchorPane fx:id="mainWindow" disable="true" prefHeight="475.0" prefWidth="675.0" styleClass="background" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_app.MainWindController">
    <children>
-      <Button alignment="TOP_LEFT" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#showAllOrders" prefHeight="25.0" prefWidth="150.0" text="All orders" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
-      <Button alignment="TOP_LEFT" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#showNewOrders" prefHeight="25.0" prefWidth="150.0" text="New" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0" />
-      <Button alignment="TOP_LEFT" layoutX="16.0" layoutY="85.0" mnemonicParsing="false" onAction="#showDoneOrders" prefHeight="25.0" prefWidth="150.0" text="Done" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="85.0" />
-      <Button alignment="TOP_LEFT" layoutX="14.0" layoutY="122.0" mnemonicParsing="false" onAction="#showCancelledOrders" prefHeight="25.0" prefWidth="150.0" text="Cancelled" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="120.0" />
+      <Button fx:id="allOrders" alignment="TOP_LEFT" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#showAllOrders" prefHeight="25.0" prefWidth="150.0" text="All orders" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <Button fx:id="newOrders" alignment="TOP_LEFT" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#showNewOrders" prefHeight="25.0" prefWidth="150.0" text="New" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0" />
+      <Button fx:id="doneOrders" alignment="TOP_LEFT" layoutX="16.0" layoutY="85.0" mnemonicParsing="false" onAction="#showDoneOrders" prefHeight="25.0" prefWidth="150.0" text="Done" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="85.0" />
+      <Button fx:id="cancelledOrders" alignment="TOP_LEFT" layoutX="14.0" layoutY="122.0" mnemonicParsing="false" onAction="#showCancelledOrders" prefHeight="25.0" prefWidth="150.0" text="Cancelled" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="120.0" />
       <TableView fx:id="tripTableView" layoutX="186.0" layoutY="13.0" prefHeight="400.0" prefWidth="480.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
         <columns>
           <TableColumn fx:id="numberOfOrder" prefWidth="26.0625" text="№" />
@@ -27,14 +27,14 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Label layoutX="14.0" layoutY="418.0" text="Search by address:" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0">
+      <Label fx:id="searchLabel" layoutX="14.0" layoutY="418.0" prefHeight="25.0" prefWidth="150.0" text="Search by address:" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="askAddress" layoutX="14.0" layoutY="388.0" onAction="#findByAddress" prefHeight="25.0" prefWidth="150.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="438.0" mnemonicParsing="false" onAction="#createOrder" prefHeight="25.0" prefWidth="150.0" text="Create" textAlignment="CENTER" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="180.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="435.0" mnemonicParsing="false" onAction="#editOrder" prefHeight="25.0" prefWidth="150.0" text="Edit" textAlignment="CENTER" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="345.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="439.0" layoutY="435.0" mnemonicParsing="false" onAction="#removeOrder" prefHeight="25.0" prefWidth="150.0" text="Remove" textAlignment="CENTER" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="510.0" />
+      <Button fx:id="createOrders" alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="438.0" mnemonicParsing="false" onAction="#createOrder" prefHeight="25.0" prefWidth="150.0" text="Create" textAlignment="CENTER" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="180.0" />
+      <Button fx:id="editOrders" alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="435.0" mnemonicParsing="false" onAction="#editOrder" prefHeight="25.0" prefWidth="150.0" text="Edit" textAlignment="CENTER" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="345.0" />
+      <Button fx:id="removeOrders" alignment="CENTER" contentDisplay="CENTER" layoutX="439.0" layoutY="435.0" mnemonicParsing="false" onAction="#removeOrder" prefHeight="25.0" prefWidth="150.0" text="Remove" textAlignment="CENTER" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="510.0" />
    </children>
 </AnchorPane>

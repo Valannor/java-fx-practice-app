@@ -31,6 +31,26 @@ public class MainWindController
     @FXML
     private TableColumn<Trip, String> dateOfOrder;
 
+    @FXML
+    private Button allOrders;
+    @FXML
+    private Button newOrders;
+    @FXML
+    private Button doneOrders;
+    @FXML
+    private Button cancelledOrders;
+
+    @FXML
+    private Button createOrders;
+    @FXML
+    private Button editOrders;
+    @FXML
+    private Button removeOrders;
+
+    @FXML
+    private Label searchLabel;
+
+
     private MainApp mainApp;
 
     public MainWindController()
@@ -196,5 +216,24 @@ public class MainWindController
     private String errorHeader()
     {
         return elementName("errorHeader");
+    }
+
+    public void applyInterface()
+    {
+        addressOfOrder.textProperty().setValue(elementName("addressOfOrder"));
+        statusOfOrder.textProperty().setValue(elementName("statusOfOrder"));
+        dateOfOrder.textProperty().setValue(elementName("dateOfOrder"));
+
+        allOrders.textProperty().setValue(elementName("allOrders"));
+        newOrders.textProperty().setValue(elementName("newOrders"));
+        doneOrders.textProperty().setValue(elementName("doneOrders"));
+        cancelledOrders.textProperty().setValue(elementName("cancelledOrders"));
+
+        createOrders.textProperty().setValue(elementName("createOrders"));
+        editOrders.textProperty().setValue(elementName("editOrders"));
+        removeOrders.textProperty().setValue(elementName("removeOrders"));
+
+        searchLabel.textProperty().setValue(elementName("searchLabel"));
+        /*textProperty().setValue(elementName(""));*/
     }
 }

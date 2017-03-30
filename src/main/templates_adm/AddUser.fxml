@@ -11,13 +11,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="300.0" styleClass="background" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_adm.AddUserController">
    <children>
-      <Label fx:id="usernameLabel" layoutX="14.0" layoutY="23.0" styleClass="label-bright" text="Username:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
+      <Label fx:id="usernameLabel" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="Username:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="loginField" layoutX="12.0" layoutY="43.0" prefHeight="25.0" prefWidth="270.0" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="45.0" />
-      <Label fx:id="passwordLabel" layoutX="13.0" layoutY="98.0" styleClass="label-bright" text="Password:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="95.0">
+      <Label fx:id="passwordLabel" layoutX="13.0" layoutY="98.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="Password:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="95.0">
          <font>
             <Font size="14.0" />
          </font>
