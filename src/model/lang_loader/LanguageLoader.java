@@ -64,7 +64,7 @@ public class LanguageLoader
         } catch (IOException e)
         {
             e.printStackTrace();
-            return null;
+            return Language.ENGLISH;
         }
     }
 
@@ -88,7 +88,7 @@ public class LanguageLoader
                     Charset.forName("Windows-1251")));
 
             return properties;
-        } catch (IOException | NullPointerException e)
+        } catch (IOException e)
         {
             e.printStackTrace();
             return null;
@@ -96,8 +96,19 @@ public class LanguageLoader
     }
 
     //Returns element filler
-    public static String elementName(WindowType type, String elementType) throws NullPointerException
+    public static String elementName(WindowType type, String elementType)
     {
-        return (String) getWindowProps(type).get(elementType);
+        String elementName;
+
+        try
+        {
+            elementName = getWindowProps(type).getProperty(elementType);
+        } catch (NullPointerException e)
+        {
+            e.printStackTrace();
+            elementName = "<-Not specified-> " + checkConfigLang();
+        }
+
+        return elementName;
     }
 }

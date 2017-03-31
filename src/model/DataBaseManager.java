@@ -41,17 +41,13 @@ public class DataBaseManager
     private List<Trip> showInOrder()
     {
         List<Trip> tripsList = new ArrayList<>(trips);
-        tripsList.sort(new Comparator<Trip>()
+        tripsList.sort((Trip o1, Trip o2) ->
         {
-            @Override
-            public int compare(Trip o1, Trip o2)
-            {
-                int result = o1.getOrderDate().compareTo(o2.getOrderDate());
-                if (result == 0)
-                    result = o1.getOrderNumber() < o2.getOrderNumber() ? -1 : 1;
+            int result = o1.getOrderDate().compareTo(o2.getOrderDate());
+            if (result == 0)
+                result = o1.getOrderNumber() < o2.getOrderNumber() ? -1 : 1;
 
-                return result;
-            }
+            return result;
         });
 
         return tripsList;

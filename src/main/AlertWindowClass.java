@@ -57,6 +57,7 @@ public class AlertWindowClass
 
         alert.setTitle(title);
         alert.setHeaderText(header);
+        // TODO: 31.03.2017 Interesting. Is it ok to use this kind of construction with varargs?
         alert.setContentText(String.format(messagePattern, parameters));
 
         DialogPane dialogPane = alert.getDialogPane();

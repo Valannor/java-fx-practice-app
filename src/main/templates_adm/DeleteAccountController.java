@@ -77,10 +77,10 @@ public class DeleteAccountController
             message += elementName("errorMessage_1");
         } else if (!UserSystemController.isUserExist(loginField.getText()))
         {
-            message += elementName("errorMessage_2");;
+            message += elementName("errorMessage_2");
         } else if (loginField.getText().equals("admin"))
         {
-            message += elementName("errorMessage_3");;
+            message += elementName("errorMessage_3");
         }
 
         if (message.length() == 0)
