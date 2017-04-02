@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
+import model.Trip;
 import model.lang_loader.Language;
 import operations.FileSystemController;
 import model.lang_loader.LanguageLoader;
@@ -71,6 +72,9 @@ public class RootController
     @FXML
     private void handleCreate()
     {
+        if (FileSystemController.isChanged())
+            handleCloseFile();
+
         FileSystemController.createDataBase();
 
         AlertWindowClass.alertWindow(Alert.AlertType.CONFIRMATION, mainApp.getPrimaryStage(),
@@ -136,7 +140,7 @@ public class RootController
 
 
     /**
-     * "Administration" menu button operations
+     * "Profile" menu button operations
      */
     @FXML
     private void logIn()
@@ -193,6 +197,18 @@ public class RootController
 
 
     /**
+     * "Details" menu button operations
+     */
+    @FXML
+    private void handleOrderDetails()
+    {
+        Trip trip = mainApp.getMainWindController().getSelectedTrip();
+
+        mainApp.showDetailsWindow(trip);
+    }
+
+
+    /**
      * "Settings" menu button operations
      */
     @FXML
@@ -206,6 +222,11 @@ public class RootController
     @FXML
     private MenuItem logInButton, logOutButton, addUserButton,
             removeUserButton, editPasswordButton, closeApp;
+
+    @FXML
+    private Menu details;
+    @FXML
+    private MenuItem orderDetails, statistics;
 
     @FXML
     private Menu settings;
@@ -306,6 +327,10 @@ public class RootController
         removeUserButton.textProperty().setValue(elementName("removeUser"));
         editPasswordButton.textProperty().setValue(elementName("editPassword"));
         closeApp.textProperty().setValue(elementName("closeApp"));
+
+        details.setText(elementName("detailsMenu"));
+        orderDetails.setText(elementName("orderDetails"));
+        statistics.setText(elementName("statistics"));
 
         settings.textProperty().setValue(elementName("settingsMenu"));
         dateTimeView.textProperty().setValue(elementName("dateTimeMenu"));

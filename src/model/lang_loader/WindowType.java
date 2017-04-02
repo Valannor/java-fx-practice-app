@@ -8,6 +8,7 @@ public enum WindowType
     DELETE_ACCOUNT,
     EDIT_PASSWORD,
     USER_SIGN_IN,
+    ORDER_DETAILS,
 
     MAIN,
     ADD_ORDER,

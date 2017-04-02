@@ -43,6 +43,12 @@
                   <MenuItem fx:id="closeApp" mnemonicParsing="false" onAction="#exitApplication" text="Close application" />
                </items>
             </Menu>
+            <Menu fx:id="details" mnemonicParsing="false" text="Details">
+              <items>
+                <MenuItem fx:id="orderDetails" mnemonicParsing="false" onAction="#handleOrderDetails" text="Order details" />
+                  <MenuItem fx:id="statistics" mnemonicParsing="false" text="Statistics" />
+              </items>
+            </Menu>
             <Menu fx:id="settings" mnemonicParsing="false" text="Settings">
                <items>
                   <Menu fx:id="dateTimeView" mnemonicParsing="false" text="Date/Time view">

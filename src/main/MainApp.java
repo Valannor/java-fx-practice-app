@@ -196,7 +196,7 @@ public class MainApp extends Application
 
 
     /**
-     * Administration menu windows
+     * Profile menu windows
      */
     public boolean showSignInDialog()
     {
@@ -356,6 +356,42 @@ public class MainApp extends Application
             return false;
         }
     }
+
+
+    /**
+     * Details menu windows
+     */
+    public void showDetailsWindow(Trip trip)
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("templates_adm/OrderDetails.fxml"));
+            AnchorPane detailsPane = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle(elementName("orderDetails"));
+
+            dialogStage.setResizable(false);
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(detailsPane);
+            dialogStage.setScene(scene);
+            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
+
+            OrderDetailsController controller = loader.getController();
+            controller.setTrip(trip);
+
+            dialogStage.showAndWait();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
 
     private String elementName(String elementType)
     {

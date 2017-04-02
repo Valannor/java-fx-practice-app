@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import model.lang_loader.LanguageLoader;
+import model.lang_loader.WindowType;
 
 import java.util.Date;
 
@@ -103,16 +105,16 @@ public class Trip
         switch (status)
         {
             case NEW_ORDER:
-                statusText = "New order";
+                statusText = elementName("status_new");
                 break;
             case CANCELLED:
-                statusText = "Cancelled order";
+                statusText = elementName("status_cancelled");
                 break;
             case DONE:
-                statusText = "Done order";
+                statusText = elementName("status_done");
                 break;
             default:
-                statusText = "New order";
+                statusText = elementName("status_new");
                 break;
         }
 
@@ -122,5 +124,14 @@ public class Trip
     public StringProperty orderAddressProp()
     {
         return new SimpleStringProperty(address);
+    }
+
+
+    /**
+     * Settings
+     */
+    private String elementName(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.MAIN, elementType);
     }
 }

@@ -52,7 +52,10 @@ public class EditOrderController
         this.trip = trip;
 
         this.address.setText(trip.getAddress());
-        this.statusChoiceBox.getItems().addAll("New", "Done", "Cancelled");
+        this.statusChoiceBox.getItems().addAll(
+                choiceBoxElement("status_new"),
+                choiceBoxElement("status_cancelled"),
+                choiceBoxElement("status_done"));
     }
 
     public boolean isOkClicked()
@@ -66,21 +69,13 @@ public class EditOrderController
         if (isInputValid())
         {
             Status status;
-            switch (statusChoiceBox.getValue())
-            {
-                case "New":
-                    status = Status.NEW_ORDER;
-                    break;
-                case "Done":
-                    status = Status.DONE;
-                    break;
-                case "Cancelled":
-                    status = Status.CANCELLED;
-                    break;
-                default:
-                    status = Status.NEW_ORDER;
-                    break;
-            }
+            String statusValue = statusChoiceBox.getValue();
+
+            if (statusValue.equals(choiceBoxElement("status_cancelled")))
+                status = Status.CANCELLED;
+            else if (statusValue.equals(choiceBoxElement("status_done")))
+                status = Status.DONE;
+            else status = Status.NEW_ORDER;
 
             FileSystemController.editTrip(trip, status, address.getText());
             okClicked = true;
@@ -120,5 +115,10 @@ public class EditOrderController
     private String elementName(String elementType)
     {
         return LanguageLoader.elementName(WindowType.EDIT_ORDER, elementType);
+    }
+
+    private String choiceBoxElement(String elementType)
+    {
+        return LanguageLoader.elementName(WindowType.MAIN, elementType);
     }
 }

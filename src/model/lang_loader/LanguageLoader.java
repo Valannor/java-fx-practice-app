@@ -60,7 +60,7 @@ public class LanguageLoader
             if (properties.isEmpty())
                 setConfig(Language.ENGLISH);
 
-            return Language.valueOf((String) properties.get("localization"));
+            return Language.valueOf(properties.getProperty("localization"));
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -103,10 +103,22 @@ public class LanguageLoader
         try
         {
             elementName = getWindowProps(type).getProperty(elementType);
-        } catch (NullPointerException e)
+
+            if (elementName == null)
+                throw new IllegalArgumentException();
+        } catch (NullPointerException | IllegalArgumentException e)
         {
+            // TODO: 31.03.2017 Create logger for collecting all exceptions
             e.printStackTrace();
-            elementName = "<-Not specified-> " + checkConfigLang();
+
+            if (e instanceof NullPointerException)
+                elementName = "<-Missing window-> "
+                        + type + " for "
+                        + checkConfigLang();
+            else
+                elementName = "<-Missing element-> "
+                        + type + "->" + elementType
+                        + " for " + checkConfigLang();
         }
 
         return elementName;

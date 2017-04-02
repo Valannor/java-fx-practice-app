@@ -98,7 +98,7 @@ public class MainWindController
     @FXML
     private void editOrder()
     {
-        Trip trip = tripTableView.getSelectionModel().getSelectedItem();
+        Trip trip = getSelectedTrip();
 
         if (trip != null)
         {
@@ -125,7 +125,7 @@ public class MainWindController
     @FXML
     private void removeOrder()
     {
-        Trip trip = tripTableView.getSelectionModel().getSelectedItem();
+        Trip trip = getSelectedTrip();
 
         if (trip != null)
         {
@@ -203,6 +203,11 @@ public class MainWindController
     /**
      * Settings
      */
+    public Trip getSelectedTrip()
+    {
+        return tripTableView.getSelectionModel().getSelectedItem();
+    }
+
     private String elementName(String elementType)
     {
         return LanguageLoader.elementName(WindowType.MAIN, elementType);
@@ -234,6 +239,5 @@ public class MainWindController
         removeOrders.textProperty().setValue(elementName("removeOrders"));
 
         searchLabel.textProperty().setValue(elementName("searchLabel"));
-        /*textProperty().setValue(elementName(""));*/
     }
 }
