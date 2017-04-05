@@ -137,8 +137,8 @@ public class FileSystemController
     /**
      * Date & language representation modes
      */
-    public static String datePattern = "dd.MM.yyyy\thh:mm:ss ";
-    public static Locale locale = Locale.ENGLISH;
+    private static String datePattern = "dd.MM.yyyy\thh:mm:ss ";
+    public static Locale locale;
 
     public static String getDatePattern()
     {

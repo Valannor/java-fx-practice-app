@@ -8,32 +8,32 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="350.0" styleClass="background" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_adm.OrderDetailsController">
    <children>
-      <Label fx:id="addressLabel" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="Address:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
+      <Label fx:id="addressLabel" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="Address:" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="addressDetails" layoutX="15.0" layoutY="45.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="&lt;Address details&gt;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="45.0">
+      <Label fx:id="addressDetails" layoutX="15.0" layoutY="45.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="&lt;Address details&gt;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="45.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="statusLabel" layoutX="13.0" layoutY="98.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="Status:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="95.0">
+      <Label fx:id="statusLabel" layoutX="13.0" layoutY="98.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="Status:" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="95.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="statusDetails" layoutX="15.0" layoutY="120.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="&lt;Status details&gt;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="120.0">
+      <Label fx:id="statusDetails" layoutX="15.0" layoutY="120.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="&lt;Status details&gt;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="120.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="dateLabel" layoutX="14.0" layoutY="176.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="Date\Time:" AnchorPane.topAnchor="170.0">
+      <Label fx:id="dateLabel" layoutX="14.0" layoutY="176.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="Date\Time:" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="170.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="dateDetails" layoutX="16.0" layoutY="198.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="&lt;Date details&gt;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="195.0">
+      <Label fx:id="dateDetails" layoutX="16.0" layoutY="198.0" prefHeight="25.0" prefWidth="270.0" styleClass="label-bright" text="&lt;Date details&gt;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="195.0">
          <font>
             <Font size="14.0" />
          </font>

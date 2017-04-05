@@ -391,6 +391,35 @@ public class MainApp extends Application
         }
     }
 
+    public void showStatistics()
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("templates_adm/Statistics.fxml"));
+            AnchorPane statistics = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle(elementName("statistics"));
+
+            dialogStage.setResizable(true);
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(statistics);
+            dialogStage.setScene(scene);
+            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
+
+            StatisticsController controller = loader.getController();
+            controller.setOrders(ordersToShow);
+
+            dialogStage.showAndWait();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
 
     private String elementName(String elementType)

@@ -74,7 +74,7 @@ public class MainWindController
                 cellData ->
                 {
                     SimpleStringProperty property = new SimpleStringProperty();
-                    DateFormat dateFormat = new SimpleDateFormat(FileSystemController.datePattern, FileSystemController.locale);
+                    DateFormat dateFormat = new SimpleDateFormat(FileSystemController.getDatePattern(), FileSystemController.getLocale());
                     property.setValue(dateFormat.format(cellData.getValue().getOrderDate()));
                     return property;
                 }

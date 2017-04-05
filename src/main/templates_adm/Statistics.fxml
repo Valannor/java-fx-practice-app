@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="background" stylesheets="@../styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.templates_adm.StatisticsController">
+   <children>
+      <BarChart fx:id="barChart" layoutX="10.0" layoutY="13.0" prefHeight="300.0" prefWidth="400.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="15.0">
+        <xAxis>
+          <CategoryAxis fx:id="axis" side="BOTTOM" tickLabelFill="WHITE">
+               <tickLabelFont>
+                  <Font size="10.0" />
+               </tickLabelFont>
+            </CategoryAxis>
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" tickLabelFill="WHITE">
+               <tickLabelFont>
+                  <Font name="System Bold" size="10.0" />
+               </tickLabelFont>
+            </NumberAxis>
+        </yAxis>
+      </BarChart>
+      <Button fx:id="months" layoutX="435.0" layoutY="15.0" maxHeight="30.0" maxWidth="205.0" minHeight="30.0" minWidth="205.0" mnemonicParsing="false" onAction="#setMonthData" prefHeight="30.0" prefWidth="205.0" text="Months" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <Button fx:id="weekdays" layoutX="430.0" layoutY="87.0" maxHeight="30.0" maxWidth="205.0" minHeight="30.0" minWidth="205.0" mnemonicParsing="false" onAction="#setWeekdaysData" prefHeight="30.0" prefWidth="205.0" text="Weekdays" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="90.0" />
+      <Button fx:id="hours" layoutX="430.0" layoutY="163.0" maxHeight="30.0" maxWidth="205.0" minHeight="30.0" minWidth="205.0" mnemonicParsing="false" onAction="#setHoursData" prefHeight="30.0" prefWidth="205.0" text="Hours" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="165.0" />
+   </children>
+</AnchorPane>

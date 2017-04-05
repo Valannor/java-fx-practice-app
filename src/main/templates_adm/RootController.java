@@ -207,6 +207,12 @@ public class RootController
         mainApp.showDetailsWindow(trip);
     }
 
+    @FXML
+    private void handleStatistics()
+    {
+        mainApp.showStatistics();
+    }
+
 
     /**
      * "Settings" menu button operations

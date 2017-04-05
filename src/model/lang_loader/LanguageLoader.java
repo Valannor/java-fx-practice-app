@@ -1,8 +1,11 @@
 package model.lang_loader;
 
+import operations.FileSystemController;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.Locale;
 import java.util.Properties;
 
 public class LanguageLoader
@@ -60,10 +63,17 @@ public class LanguageLoader
             if (properties.isEmpty())
                 setConfig(Language.ENGLISH);
 
-            return Language.valueOf(properties.getProperty("localization"));
-        } catch (IOException e)
+            Language language = Language.valueOf(properties.getProperty("localization"));
+            if (language == Language.RUSSIAN)
+                FileSystemController.setLocale(new Locale("ru", "RU"));
+            else
+                FileSystemController.setLocale(Locale.ENGLISH);
+
+            return language;
+        } catch (IOException | NullPointerException e)
         {
-            e.printStackTrace();
+//            e.printStackTrace();
+            FileSystemController.setLocale(Locale.ENGLISH);
             return Language.ENGLISH;
         }
     }
