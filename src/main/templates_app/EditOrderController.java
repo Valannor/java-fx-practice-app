@@ -3,6 +3,7 @@ package main.templates_app;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import main.Controller;
 import model.Status;
 import model.Trip;
 import operations.FileSystemController;
@@ -10,7 +11,7 @@ import main.AlertWindowClass;
 import model.lang_loader.LanguageLoader;
 import model.lang_loader.WindowType;
 
-public class EditOrderController
+public class EditOrderController implements Controller
 {
     @FXML
     private TextField address;

@@ -6,12 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import main.Controller;
 import model.lang_loader.LanguageLoader;
 import operations.UserSystemController;
 import main.AlertWindowClass;
 import model.lang_loader.WindowType;
 
-public class EditPasswordController
+public class EditPasswordController implements Controller
 {
     @FXML
     private PasswordField passwordField;

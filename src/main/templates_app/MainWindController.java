@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import main.Controller;
 import model.Status;
 import model.Trip;
 import model.lang_loader.LanguageLoader;
@@ -15,7 +16,7 @@ import main.MainApp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class MainWindController
+public class MainWindController implements Controller
 {
     /**
      * Table elements

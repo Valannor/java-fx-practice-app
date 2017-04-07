@@ -2,13 +2,14 @@ package main.templates_adm;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import main.Controller;
 import model.Trip;
 import model.lang_loader.LanguageLoader;
 import model.lang_loader.WindowType;
 
 import java.text.SimpleDateFormat;
 
-public class OrderDetailsController
+public class OrderDetailsController implements Controller
 {
     @FXML
     private Label addressLabel;

@@ -4,11 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import main.Controller;
 import model.lang_loader.LanguageLoader;
 import operations.UserSystemController;
 import model.lang_loader.WindowType;
 
-public class CloseFileController
+public class CloseFileController implements Controller
 {
     @FXML
     private Label question;

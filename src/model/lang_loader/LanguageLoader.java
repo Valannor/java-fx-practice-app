@@ -70,9 +70,12 @@ public class LanguageLoader
                 FileSystemController.setLocale(Locale.ENGLISH);
 
             return language;
-        } catch (IOException | NullPointerException e)
+        } catch (IOException | NullPointerException | IllegalArgumentException e)
         {
 //            e.printStackTrace();
+            if (e instanceof IllegalArgumentException)
+                setConfig(Language.ENGLISH);
+
             FileSystemController.setLocale(Locale.ENGLISH);
             return Language.ENGLISH;
         }
@@ -87,7 +90,6 @@ public class LanguageLoader
     //Localisation loading
     private static Properties getWindowProps(WindowType windowType)
     {
-        // TODO: 27.03.2017 Terrific code. Refactor needed.
         try
         {
             Properties properties = new Properties();

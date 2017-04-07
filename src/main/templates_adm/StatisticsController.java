@@ -7,6 +7,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import main.Controller;
 import model.Trip;
 import model.lang_loader.LanguageLoader;
 import model.lang_loader.WindowType;
@@ -16,7 +17,7 @@ import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class StatisticsController
+public class StatisticsController implements Controller
 {
     @FXML
     private BarChart barChart;

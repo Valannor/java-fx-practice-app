@@ -3,12 +3,13 @@ package main.templates_adm;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import main.Controller;
 import model.lang_loader.LanguageLoader;
 import operations.UserSystemController;
 import main.AlertWindowClass;
 import model.lang_loader.WindowType;
 
-public class UserSignInController
+public class UserSignInController implements Controller
 {
     @FXML
     private TextField loginField;

@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
+import main.Controller;
 import model.Trip;
 import model.lang_loader.Language;
 import operations.FileSystemController;
@@ -17,7 +18,7 @@ import model.lang_loader.WindowType;
 import java.io.File;
 import java.util.Locale;
 
-public class RootController
+public class RootController implements Controller
 {
     public RootController()
     {

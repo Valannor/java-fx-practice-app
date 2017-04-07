@@ -6,12 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.Controller;
 import operations.FileSystemController;
 import main.AlertWindowClass;
 import model.lang_loader.LanguageLoader;
 import model.lang_loader.WindowType;
 
-public class AddOrderController
+public class AddOrderController implements Controller
 {
     @FXML
     private TextField address;

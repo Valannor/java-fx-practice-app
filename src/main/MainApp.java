@@ -121,23 +121,11 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_app/AddOrder.fxml"));
-            AnchorPane addPane = loader.load();
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("new_order"));
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
+            AddOrderController controller = (AddOrderController) createController("templates_app/AddOrder.fxml",
+                    "new_order", "main/resources/images/folder_img.png", dialogStage, false);
 
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(addPane);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/folder_img.png"));
-
-            AddOrderController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-
             dialogStage.showAndWait();
             return controller.isOkClicked();
 
@@ -152,25 +140,12 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_app/EditOrder.fxml"));
-            AnchorPane editPane = loader.load();
-
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("edit_order"));
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
+            EditOrderController controller = (EditOrderController) createController("templates_app/EditOrder.fxml",
+                    "edit_order", "main/resources/images/folder_img.png", dialogStage, false);
 
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(editPane);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/folder_img.png"));
-
-            EditOrderController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setTrip(trip);
-
             dialogStage.showAndWait();
             return controller.isOkClicked();
 
@@ -202,24 +177,11 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_adm/UserSignIn.fxml"));
-            AnchorPane signInPane = loader.load();
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("sign_in"));
+            UserSignInController controller = (UserSignInController) createController("templates_adm/UserSignIn.fxml",
+                    "sign_in", "main/resources/images/user_img.png", dialogStage, false);
 
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(signInPane);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
-
-            UserSignInController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-
             dialogStage.showAndWait();
             return controller.isOkClicked();
 
@@ -234,23 +196,11 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_adm/CloseFile.fxml"));
-            AnchorPane signOutPane = loader.load();
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("sign_out"));
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
+            CloseFileController controller = (CloseFileController) createController("templates_adm/CloseFile.fxml",
+                    "sign_out", "main/resources/images/user_img.png", dialogStage, false);
 
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(signOutPane);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
-
-            CloseFileController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-
             dialogStage.showAndWait();
             return controller.isOkClicked();
 
@@ -265,24 +215,11 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_adm/AddUser.fxml"));
-            AnchorPane addUserPane = loader.load();
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("registration"));
+            AddUserController controller = (AddUserController) createController("templates_adm/AddUser.fxml",
+                    "registration", "main/resources/images/user_img.png", dialogStage,false);
 
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(addUserPane);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
-
-            AddUserController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-
             dialogStage.showAndWait();
             return controller.isOkClicked();
 
@@ -297,24 +234,11 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_adm/DeleteAccount.fxml"));
-            AnchorPane removeUserPane = loader.load();
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("delete_account"));
+            DeleteAccountController controller = (DeleteAccountController) createController("templates_adm/DeleteAccount.fxml",
+                    "delete_account", "main/resources/images/user_img.png", dialogStage, false);
 
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(removeUserPane);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
-
-            DeleteAccountController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-
             dialogStage.showAndWait();
             return controller.isOkClicked();
 
@@ -329,24 +253,11 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_adm/EditPassword.fxml"));
-            AnchorPane editPasswordPane = loader.load();
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("change_password"));
+            EditPasswordController controller = (EditPasswordController) createController("templates_adm/EditPassword.fxml",
+                    "change_password", "main/resources/images/user_img.png", dialogStage, false);
 
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(editPasswordPane);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
-
-            EditPasswordController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-
             dialogStage.showAndWait();
             return controller.isOkClicked();
 
@@ -365,25 +276,13 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_adm/OrderDetails.fxml"));
-            AnchorPane detailsPane = loader.load();
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("orderDetails"));
+            OrderDetailsController controller = (OrderDetailsController) createController("templates_adm/OrderDetails.fxml",
+                    "orderDetails", "main/resources/images/user_img.png", dialogStage, true);
 
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(detailsPane);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
-
-            OrderDetailsController controller = loader.getController();
             controller.setTrip(trip);
-
             dialogStage.showAndWait();
+
         }
         catch (IOException e)
         {
@@ -395,25 +294,13 @@ public class MainApp extends Application
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("templates_adm/Statistics.fxml"));
-            AnchorPane statistics = loader.load();
-
             Stage dialogStage = new Stage();
-            dialogStage.setTitle(elementName("statistics"));
+            StatisticsController controller = (StatisticsController) createController("templates_adm/Statistics.fxml",
+                    "statistics", "main/resources/images/user_img.png", dialogStage, true);
 
-            dialogStage.setResizable(true);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(statistics);
-            dialogStage.setScene(scene);
-            dialogStage.getIcons().add(new Image("main/resources/images/user_img.png"));
-
-            StatisticsController controller = loader.getController();
             controller.setOrders(ordersToShow);
-
             dialogStage.showAndWait();
+
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -425,5 +312,25 @@ public class MainApp extends Application
     private String elementName(String elementType)
     {
         return LanguageLoader.elementName(WindowType.MAIN_APP, elementType);
+    }
+
+    private Controller createController(String loaderResource, String titleElement,
+                                        String imageLocation, Stage dialogStage, boolean isResizable) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(loaderResource));
+        AnchorPane pane = loader.load();
+
+        dialogStage.setTitle(elementName(titleElement));
+
+        dialogStage.setResizable(isResizable);
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(pane);
+        dialogStage.setScene(scene);
+        dialogStage.getIcons().add(new Image(imageLocation));
+
+        return loader.getController();
     }
 }
