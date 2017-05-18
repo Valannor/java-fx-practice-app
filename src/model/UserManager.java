@@ -57,27 +57,22 @@ public class UserManager
 
     public void registryUser(String newUserLogin, String newUserPassword)
     {
-        try
-        {
-            Properties properties = new Properties();
-            properties.load(new FileInputStream(usersFile));
-
-            properties.put(newUserLogin, newUserPassword);
-            properties.store(new FileOutputStream(usersFile), null);
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        userLoginPasswordUpdate(newUserLogin, newUserPassword);
     }
 
     public void editUserPassword(String newPassword)
+    {
+        userLoginPasswordUpdate(login, newPassword);
+    }
+
+    private void userLoginPasswordUpdate(String newUserLogin, String newUserPassword)
     {
         try
         {
             Properties properties = new Properties();
             properties.load(new FileInputStream(usersFile));
 
-            properties.put(login, newPassword);
+            properties.put(newUserLogin, newUserPassword);
             properties.store(new FileOutputStream(usersFile), null);
         } catch (IOException e)
         {
